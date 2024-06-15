@@ -1,0 +1,272 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffcc33, #ff6699);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0;
+    padding: 0.5em 0;
+    animation: fadeInDown 2s;
+}
+
+p {
+    font-size: 1.5em;
+    margin: 0;
+    animation: fadeInUp 2s;
+}
+
+button {
+    padding: 0.5em 2em;
+    font-size: 1.2em;
+    border: none;
+    background-color: #ff6699;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+    animation: bounceIn 2s;
+}
+
+button:hover {
+    background-color: #ff3366;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.balloons {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 100px;
+    height: 140px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: floatUp 6s ease-in-out infinite;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 4px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.balloon1 {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.balloon2 {
+    left: 50%;
+    animation-delay: 2s;
+}
+
+.balloon3 {
+    left: 80%;
+    animation-delay: 4s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#confetti-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.confetti {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.heart {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    transform: rotate(45deg);
+    animation: floatHeart 8s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -30px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -30px;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-200px) rotate(45deg);
+    }
+    100% {
+        transform: translateY(0) rotate(45deg);
+    }
+}
+
+.heart1 {
+    left: 10%;
+    animation-delay: 1s;
+}
+
+.heart2 {
+    left: 70%;
+    animation-delay: 3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    button {
+        font-size: 0.8em;
+    }
+
+    .balloon {
+        width: 60px;
+        height: 90px;
+    }
+
+    .balloon::before {
+        height: 30px;
+    }
+
+    .heart {
+        width: 40px;
+        height: 40px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 40px;
+        height: 40px;
+    }
+}
